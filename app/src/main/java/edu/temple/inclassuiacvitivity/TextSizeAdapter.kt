@@ -16,11 +16,11 @@ class TextSizeAdapter(context_: Context, sizes_: Array<Int>) : BaseAdapter() {
     }
 
     override fun getItem(position: Int): Any {
-        TODO("Not yet implemented")
+        return sizes[position]
     }
 
     override fun getItemId(position: Int): Long {
-        TODO("Not yet implemented")
+        return position.toLong()
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
