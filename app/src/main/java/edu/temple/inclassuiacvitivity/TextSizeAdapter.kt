@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
 
-class TextSizeAdapter(context_: Context, sizes_: Array<Int>) : BaseAdapter() {
+class TextSizeAdapter(private val context_: Context, private val sizes_: Array<Int>) : BaseAdapter() {
 
     private val context = context_
     private val sizes = sizes_
@@ -25,10 +25,19 @@ class TextSizeAdapter(context_: Context, sizes_: Array<Int>) : BaseAdapter() {
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        val txtView = TextView(context)
-        txtView.setTextSize(sizes[position].toFloat())
+
+        val txtView : TextView
+
+        if (convertView!=null){
+            txtView = convertView as TextView
+        }
+        else {
+            txtView = TextView(context)
+            txtView.setPadding(10,10,0,10)
+        }
+
+        txtView.textSize = (sizes[position].toFloat())
         txtView.text = sizes[position].toString()
-        txtView.setPadding(10,10,0,10)
         return txtView
     }
 
